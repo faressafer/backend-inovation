@@ -1,9 +1,10 @@
 const mongoose = require('mongoose');
+const { IndusGroup } = require('../models/indusgroup');
 
 
 const companySchema = mongoose.Schema({
     assessmentRecord: {
-        type: Number,
+        type: String,
         required: true
     },
     companyName: {
@@ -11,22 +12,37 @@ const companySchema = mongoose.Schema({
         required: true
     },
     bern: {
-        type: Number,
-        required: true
+        type: String,
+        required: true,
     },
-    adress:{
+    address: {
         type: String,
         required: true
     },
-    dated:{
+    dated: {
         type: Date,
         required: true,
-        default: Date.now
     },
-    indusGroup:{
-        type: mongoose.Types.ObjectId,
+    indusGroup: {
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'IndusGroup',
         required: true
+    },
+    income:{
+        type: Number,
+        required: true,
+    },
+    size: {
+        type: Number,
+        required: true,
+    },
+    exportation: {
+        type: Boolean,
+        required: true,
+    },
+    multiproduction: {
+        type: Boolean,
+        required: true,
     },
     preparedBy: {
         type: String,
@@ -34,5 +50,14 @@ const companySchema = mongoose.Schema({
     }
 })
 
-exports.Company = mongoose.model('Company',companySchema);
+exports.Company = mongoose.model('Company', companySchema);
 
+// {
+//     "assessmentRecord": "OSAY23SN00027",
+//     "companyName": "SOMOCER",
+//     "bern": "03927DA",
+//     "adress": "Menzel hayet Monastir 5033 Tunisie, Monastir 5033, Tunisia",
+//     "dated" : "20062023",
+//     "indusGroup": "",
+//     "preparedBy": "Ayoub Magherbi"
+// }
